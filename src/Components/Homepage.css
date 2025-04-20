@@ -1,0 +1,14 @@
+html,
+body,
+#root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.left img {
+    object-fit: cover;
+    width: 20px;
+    height: 20px;
+}

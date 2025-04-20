@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1,
+        "question": "Hello",
+        "response": "Hello! How can I assist you today?"
+    },
+    {
+        "id": 4,
+        "question": "My order has not arrived yet.",
+        "response": "Please check your order status in the 'My Orders' section of your account. If the estimated delivery date has passed, kindly contact our support team with your order number."
+    },
+    {
+        "id": 3,
+        "question": "How can I reset my password?",
+        "response": "You can reset your password by clicking on 'Forgot Password' on the login page and following the instructions."
+    },{
+        "id": 5,
+        "question": "I am unable to log in to my account.",
+        "response": "Ensure that you are using the correct email and password. If the issue persists, try resetting your password or clearing your browser cache."
+    }
+]
