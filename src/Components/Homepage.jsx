@@ -29,9 +29,10 @@ const Homepage = () => {
     setInputValue(value);
   };
 
+  const key = import.meta.env.VITE_API_KEY;
   const ApiHit = async (ques) => {
     const response = await axios.post(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyD1QtguBZ1g4mal38Ijfn5oaA_kmlKDhX8",
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`,
       {
         contents: [
           {
