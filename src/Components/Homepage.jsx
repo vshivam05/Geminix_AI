@@ -209,7 +209,7 @@ const Homepage = (props) => {
                 />
               </div>
 
-              <div className="defaultQues mb-4 md:mb-6 mt-4 w-full">
+              <div className="defaultQues mb-4 md:mb-6 mt-4 w-full overflow-y-auto max-h-[calc(100vh-150px)] pb-24">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
                   {DefaultQuesJson.map((ques) => (
                     <DefaultQuestion
@@ -227,7 +227,7 @@ const Homepage = (props) => {
             HomepageData && <QuestionAnswer data={HomepageData} />
           )}
 
-          <div className="flex flex-col md:flex-row  w-full  bottom-0 mb-4 gap-1 absolute p-1">
+          <div className="fixed bottom-0 w-3/4 md:w-3/4 w-full  p-2 shadow-md flex flex-col md:flex-row gap-1 z-50">
             <div className="w-full md:w-3/4">
               <input
                 type="text"
@@ -242,7 +242,7 @@ const Homepage = (props) => {
                 }}
               />
             </div>
-            <div className="flex w-1/4 ">
+            <div className="flex md:w-1/4 w-full  ">
               <button
                 data-testid="ask-button-main"
                 type="button"
