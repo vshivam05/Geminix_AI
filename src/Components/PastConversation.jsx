@@ -2,7 +2,7 @@ import React from "react";
 import newchat from "../assets/newchat.png";
 // import darkMode from "../assets/darkmode.svg";
 import chat from "../assets/chat.svg";
-import { useNavigate, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import person from "../assets/person.png";
 import bot from "../assets/bot.png";
 const PastConversation = () => {

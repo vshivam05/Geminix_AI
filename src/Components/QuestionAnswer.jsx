@@ -6,10 +6,10 @@ const QuestionAnswer = ({ data }) => {
   
   const [rating, setRating] = useState(null); // state to capture rating
 
-  useEffect(() => {
+  // useEffect(() => {
    
-    console.log(data);
-  }, [data]); 
+  //   console.log(data);
+  // }, [data]); 
 
  
   const handleRatingChange = (e) => {
@@ -28,6 +28,7 @@ const QuestionAnswer = ({ data }) => {
                 alt="User"
                 className="w-12 h-12 rounded-full object-cover"
               />
+              
               <div className="text-gray-800 font-medium text-base">
                 {item.question}
                 <div className="text-sm text-gray-500 mt-1">{item.time}</div>

@@ -14,6 +14,7 @@ const Homepage = () => {
   const [HomepageData, setHomepageData] = useState([]);
   const [isHiden, setIsHidden] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleClick = (ques) => {
     const prevData = JSON.parse(localStorage.getItem("HomepageData")) || [];
@@ -31,6 +32,7 @@ const Homepage = () => {
 
   const key = import.meta.env.VITE_API_KEY;
   const ApiHit = async (ques) => {
+    setLoading(true);
     const response = await axios.post(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`,
       {
@@ -56,7 +58,6 @@ const Homepage = () => {
 
   const handleAsk = async (e) => {
     e.preventDefault();
-
     const matchedData = await ApiHit(inputValue);
 
     const prevData = JSON.parse(localStorage.getItem("HomepageData")) || [];
@@ -77,6 +78,7 @@ const Homepage = () => {
     setHomepageData(updatedData);
     setIsHidden(true);
     setInputValue("");
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -86,7 +88,7 @@ const Homepage = () => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row h-screen  w-full">
+      <div className="flex flex-col md:flex-row h-screen w-full">
         <div className="w-full md:w-1/4 bg-purple-200 p-4 flex flex-col gap-4">
           <div className="flex items-center justify-between bg-purple-300 p-3 rounded-lg shadow">
             <Link to="/" className="w-full">
@@ -148,7 +150,37 @@ const Homepage = () => {
             </div>
           </div>
 
-          {!isHiden ? (
+          {loading ? (
+            <div className="flex flex-col items-center mt-20 mx-10">
+              <button
+                type="button"
+                className="bg-purple-500 text-white px-4 py-4 rounded flex items-center justify-center"
+                disabled
+              >
+                <svg
+                  className="mr-3 h-5 w-5 animate-spin text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                  ></path>
+                </svg>
+                Loading...
+              </button>
+            </div>
+          ) : !isHiden ? (
             <div>
               <div className="flex flex-col items-center mt-20 flex-1">
                 <h2 className="text-2xl font-bold mt-0">
