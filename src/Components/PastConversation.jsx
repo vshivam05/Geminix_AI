@@ -2,24 +2,24 @@ import React from "react";
 import newchat from "../assets/newchat.png";
 // import darkMode from "../assets/darkmode.svg";
 import chat from "../assets/chat.svg";
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import person from "../assets/person.png";
 import bot from "../assets/bot.png";
-const PastConversation = () => {
+const PastConversation = (props) => {
   // const navigate = useNavigate();
   const storedData = localStorage.getItem("HomepageData");
   const parsedData = JSON.parse(storedData) || [];
   return (
     <>
       <div className="flex flex-col md:flex-row h-screen w-full">
-        <div className="w-full md:w-1/4 bg-white-200 p-4 flex flex-col gap-4">
-          <div className="flex items-center justify-between bg-purple-300 p-3 rounded-lg shadow">
+        <div className="w-full md:w-1/4 bg-purple-200 p-4 flex flex-col gap-4">
+          <div className="flex items-center justify-between bg-purple-300 p-3 rounded-lg ">
             <Link to="/" className="w-full">
               <button
                 className="text-black font-bold text-xl w-full text-left"
                 type="button"
               >
-                <div className="flex justify-evenly items-center gap-4 ">
+                <div className="flex justify-evenly items-center gap-4 bg-purple-300 ">
                   <img
                     src={newchat}
                     alt="New Query"
@@ -60,12 +60,21 @@ const PastConversation = () => {
                 Geminix AI
               </h1>
             </header>
-            <div className="flex items-center gap-2 hover:cursor-pointer ">
-              <span className="text-sm text-black">Light </span>
-              <div className=" img-fluid w-6 h-6">
+            <div
+              className="flex items-center gap-2 hover:cursor-pointer  "
+              onClick={props.toggleDarkMode}
+            >
+              <span className="text-sm text-purple-500 font-bold ">
+                {props.darkMode ? "Dark" : "Light"}
+              </span>
+              <div className="img-fluid w-6 h-6">
                 <img
-                  src="https://img.icons8.com/?size=100&id=45474&format=png&color=000000"
-                  alt=""
+                  src={
+                    props.darkMode
+                      ? "https://img.icons8.com/?size=100&id=45474&format=png&color=ffffff"
+                      : "https://img.icons8.com/?size=100&id=45474&format=png&color=000000"
+                  }
+                  alt="mode icon"
                 />
               </div>
             </div>

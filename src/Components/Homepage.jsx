@@ -10,7 +10,7 @@ import DefaultQuestion from "./DefaultQuestion";
 import "./Homepage.css";
 import QuestionAnswer from "./QuestionAnswer";
 import { Link } from "react-router-dom";
-const Homepage = () => {
+const Homepage = (props) => {
   const [HomepageData, setHomepageData] = useState([]);
   const [isHiden, setIsHidden] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -58,11 +58,19 @@ const Homepage = () => {
 
   const handleAsk = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     const matchedData = await ApiHit(inputValue);
 
-    const prevData = JSON.parse(localStorage.getItem("HomepageData")) || [];
+    let prevData = [];
+    try {
+      prevData = JSON.parse(localStorage.getItem("HomepageData")) || [];
+      if (!Array.isArray(prevData)) prevData = [];
+    } catch (e) {
+      prevData = [];
+    }
 
-    let newEntry = {
+    const newEntry = {
       question: inputValue,
       response: matchedData,
       time: new Date().toLocaleTimeString([], {
@@ -74,7 +82,6 @@ const Homepage = () => {
     const updatedData = [...prevData, newEntry];
 
     localStorage.setItem("HomepageData", JSON.stringify(updatedData));
-
     setHomepageData(updatedData);
     setIsHidden(true);
     setInputValue("");
@@ -100,7 +107,7 @@ const Homepage = () => {
                   setInputValue("");
                 }}
               >
-                <div className="flex justify-evenly items-center gap-4 ">
+                <div className="flex justify-evenly items-center gap-4 bg-purple-300 ">
                   <img
                     src={newchat}
                     alt="New Query"
@@ -139,12 +146,21 @@ const Homepage = () => {
                 Geminix AI
               </h1>
             </header>
-            <div className="flex items-center gap-2 hover:cursor-pointer ">
-              <span className="text-sm text-black">Light </span>
-              <div className=" img-fluid w-6 h-6">
+            <div
+              className="flex items-center gap-2 hover:cursor-pointer "
+              onClick={props.toggleDarkMode}
+            >
+              <span className="text-sm text-purple-500 font-bold  ">
+                {props.darkMode ? "Dark" : "Light"}
+              </span>
+              <div className="img-fluid w-6 h-6">
                 <img
-                  src="https://img.icons8.com/?size=100&id=45474&format=png&color=000000"
-                  alt=""
+                  src={
+                    props.darkMode
+                      ? "https://img.icons8.com/?size=100&id=45474&format=png&color=ffffff"
+                      : "https://img.icons8.com/?size=100&id=45474&format=png&color=000000"
+                  }
+                  alt="mode icon"
                 />
               </div>
             </div>
