@@ -227,12 +227,12 @@ const Homepage = (props) => {
             HomepageData && <QuestionAnswer data={HomepageData} />
           )}
 
-          <div className="fixed bottom-0 w-3/4 md:w-3/4 w-full  p-2 shadow-md flex flex-col md:flex-row gap-1 z-50">
+          <div className="fixed bottom-0 w-3/4 md:w-3/4 w-full  p-2 shadow-md flex flex-col md:flex-row gap-1 ">
             <div className="w-full md:w-3/4">
               <input
                 type="text"
                 placeholder="Please tell me about your query!"
-                className="w-full h-14 border-2 rounded-lg border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full h-14 border-2 rounded-lg border-gray-300 p-2 focus:outline-none "
                 onChange={handleInputChange}
                 value={inputValue}
                 onKeyDown={(e) => {

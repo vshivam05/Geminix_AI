@@ -24,7 +24,7 @@ body.dark-mode button:hover {
 body.dark-mode input,
 body.dark-mode textarea {
   background-color: #dde2ea;
-  color: #cfd7e5;
+  color: #2e2f32;
   border-color: #6b7280;
 }
 
