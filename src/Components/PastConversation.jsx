@@ -1,6 +1,6 @@
 import React from "react";
 import newchat from "../assets/newchat.png";
-import darkMode from "../assets/darkmode.svg";
+// import darkMode from "../assets/darkmode.svg";
 import chat from "../assets/chat.svg";
 import { useNavigate, Link } from "react-router-dom";
 import person from "../assets/person.png";
@@ -60,10 +60,13 @@ const PastConversation = () => {
                 Geminix AI
               </h1>
             </header>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 hover:cursor-pointer ">
               <span className="text-sm text-black">Light </span>
-              <div>
-                <img src={darkMode} className=" h-8 " alt="" />
+              <div className=" img-fluid w-6 h-6">
+                <img
+                  src="https://img.icons8.com/?size=100&id=45474&format=png&color=000000"
+                  alt=""
+                />
               </div>
             </div>
           </div>

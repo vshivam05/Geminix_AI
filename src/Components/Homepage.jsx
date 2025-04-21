@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import newchat from "../assets/newchat.png";
 import chat from "../assets/chat.svg";
-// import darkMode from "../assets/darkmode.svg";
 
 import axios from "axios";
 // import sampleData from "../apiData/sampleData.json";
