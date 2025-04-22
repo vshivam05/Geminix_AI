@@ -4,6 +4,8 @@ import chat from "../assets/chat.svg";
 
 import axios from "axios";
 // import sampleData from "../apiData/sampleData.json";
+
+
 import person from "../assets/person.png";
 import DefaultQuesJson from "../apiData/Default.json";
 import DefaultQuestion from "./DefaultQuestion";

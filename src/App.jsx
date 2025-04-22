@@ -7,9 +7,9 @@ import "./index.css";
 function App() {
   const [darkMode, setDarkMode] = useState(false);
 
-
   useEffect(() => {
     const savedMode = localStorage.getItem("darkMode");
+    console.log("from app.js", savedMode);
     if (savedMode) {
       setDarkMode(savedMode === "true");
     }
@@ -38,7 +38,12 @@ function App() {
           <Route
             exact
             path="/history"
-            element={<PastConversation toggleDarkMode={toggleDarkMode} darkMode={darkMode} />}
+            element={
+              <PastConversation
+                toggleDarkMode={toggleDarkMode}
+                darkMode={darkMode}
+              />
+            }
           />
           <Route
             exact
