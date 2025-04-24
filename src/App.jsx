@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     const savedMode = localStorage.getItem("darkMode");
-    console.log("from app.js", savedMode);
+    // console.log("from a  pp.js", savedMode);
     if (savedMode) {
       setDarkMode(savedMode === "true");
     }

@@ -5,7 +5,6 @@ import chat from "../assets/chat.svg";
 import axios from "axios";
 // import sampleData from "../apiData/sampleData.json";
 
-
 import person from "../assets/person.png";
 import DefaultQuesJson from "../apiData/Default.json";
 import DefaultQuestion from "./DefaultQuestion";
@@ -17,6 +16,7 @@ const Homepage = (props) => {
   const [isHiden, setIsHidden] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleClick = (ques) => {
     const prevData = JSON.parse(localStorage.getItem("HomepageData")) || [];
@@ -55,7 +55,11 @@ const Homepage = (props) => {
       }
     );
 
-    return await response.data.candidates[0].content.parts[0].text;
+    // const result =await response.data.candidates[0].content.parts[0].text;
+    const result = await response.data.candidates[0].content.parts[0].text;
+
+    console.log("API response:", result);
+    return result;
   };
 
   const handleAsk = async (e) => {
@@ -63,6 +67,15 @@ const Homepage = (props) => {
     setLoading(true);
 
     const matchedData = await ApiHit(inputValue);
+    // if(!matchedData) {
+    //   alert("Api limit exceeded for now, Please try again after sometime.");
+    // }
+    if (!matchedData) {
+      setShowAlert(true);
+      setTimeout(() => setShowAlert(false), 10000); // Hide after 5 sec
+      setLoading(false);
+      return;
+    }
 
     let prevData = [];
     try {
@@ -167,6 +180,12 @@ const Homepage = (props) => {
               </div>
             </div>
           </div>
+
+          {showAlert && (
+            <div className="mx-6 mt-4 p-4 border border-red-300 rounded-lg bg-red-100 text-red-700">
+              ⚠️ API limit exceeded for now. Please try again after some time.
+            </div>
+          )}
 
           {loading ? (
             <div className="flex flex-col items-center mt-20 mx-10">
